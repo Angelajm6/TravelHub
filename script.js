@@ -245,9 +245,9 @@ document.addEventListener('DOMContentLoaded', () => {
     listEl.appendChild(a_time);
 
     containerFlight.appendChild(flightContainer);
+    getHotelDetails(location, country);
     };
 
-    getHotelDetails(location, country);
     
   };
 
@@ -277,9 +277,10 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   var displayHotelDetails = function(data) {
-    var h_name = data.name;
-    var h_link = data.link;
-    var rating = data.rating;
+
+    var h_name = data[i].name;
+    var h_link = data[i].link;
+    var rating = data[i].rating;
 
     var hotelContainer = document.createElement('div');
     hotelContainer.classList = 'card';
@@ -310,6 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     containerHotel.appendChild(hotelContainer);
 
-  }
+};
+
 
   find.addEventListener("click", searchHandler);
