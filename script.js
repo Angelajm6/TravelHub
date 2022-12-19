@@ -34,3 +34,32 @@ fetch('https://best-booking-com-hotel.p.rapidapi.com/booking/best-accommodation?
         .then(response => console.log(response))
         .catch(err => console.error(err));
         */
+
+        var welcome = $(".welcome");
+        var travelHub =$(".title");
+        var click = $(".click");
+        var modal = $(".modal");
+        var modalBackground = $(".modal-background");
+        var modalCard = $(".modal-card");
+        var modalCardHead = $(".modal-card-head");
+        var modalCardTitle = $(".modal-card-title");
+        var modalCardBody = $(".modal-card-body");
+        var text = $(".text");
+        var modalCardFoot = $(".modal-card-foot");
+        var buttonSuccess = $(".button is-success");
+        var button = $(".button");
+        var containerFlight = $(".container flight");
+        var flightNumber = $(".flight_number");
+        var airline = $(".airline");
+        var aircraft = $(".aircraft");
+        var status = $(".status");
+        var aDtime = $(".a_dtime");
+        var sDtime = $(".s_dtime");
+        var dAirport = $(".d_airport");
+        var aAtime = $(".a_atime");
+        var sAtime = $(".s_atime");
+        var containerHotel = $(".containerHotel");
+        var hotel = $(".hotel");
+        var ratings = $(".ratings");
+        var another = $(".another");
+        
