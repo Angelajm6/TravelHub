@@ -1,42 +1,4 @@
-/*const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '5075fa32f5msh2d37ef7bc1f9242p1fc222jsn8d4befb79511',
-		'X-RapidAPI-Host': 'best-booking-com-hotel.p.rapidapi.com'
-	}
-};
 
-fetch('https://best-booking-com-hotel.p.rapidapi.com/booking/best-accommodation?cityName=Berlin&countryName=Germany', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
-
-      const option = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '5075fa32f5msh2d37ef7bc1f9242p1fc222jsn8d4befb79511',
-            'X-RapidAPI-Host': 'flight-info-api.p.rapidapi.com'
-        }
-    };
-    
-
-
-    const opt = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '5075fa32f5msh2d37ef7bc1f9242p1fc222jsn8d4befb79511',
-            'X-RapidAPI-Host': 'aerodatabox.p.rapidapi.com'
-        }
-    };
-    
-    fetch('https://aerodatabox.p.rapidapi.com/flights/number/DL47?withAircraftImage=false&withLocation=false', opt)
-        .then(response => response.json())
-        .then(response => console.log(response))
-        .catch(err => console.error(err));*/
-    
-
-        var welcome = $(".welcome");
-        var travelHub =$(".title");
         var click = $(".click");
         var modal = $(".modal");
         var modalBackground = $(".modal-background");
@@ -44,19 +6,14 @@ fetch('https://best-booking-com-hotel.p.rapidapi.com/booking/best-accommodation?
         var modalCardHead = $(".modal-card-head");
         var modalCardTitle = $(".modal-card-title");
         var modalCardBody = $(".modal-card-body");
-        var text = $(".text");
         var modalCardFoot = $(".modal-card-foot");
-        var buttonSuccess = $(".button is-success");
-        var button = $(".button");
-        var hotel = $(".hotel");
-        var ratings = $(".ratings");
-        var another = $(".another");
-
         var airlineInput = document.getElementById('airline');
         var f_numberInput = document.getElementById('f_number');
         var find = document.getElementById('find');
         var containerFlight = document.getElementById('flight');
         var containerHotel = document.getElementById('hotel');
+        var welcome = document.getElementById('welcome');
+        var another = document.getElementById('another');
         
 document.addEventListener('DOMContentLoaded', () => {
     // Functions to open and close a modal
@@ -143,6 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   var displayFlightDetails = function (data) {
 
+    welcome.classList.add('hide'); 
+
     for (var i=0; i < data.length; i++) {
     var aircraft = data[i].aircraft.model;
     var airline = data[i].airline.name;
@@ -167,6 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
     listEl.classList = 'list-group list-group-flush';
 
     flightContainer.appendChild(listEl);
+
+    var header = document.createElement('h1');
+    header.classList= 'list-group-item';
+    header.textContent = 'Showing flights for - ' + flight_number;
+
+    listEl.appendChild(header);
 
     var flight_numberEl = document.createElement('li');
     flight_numberEl.classList = 'list-group-item';
@@ -245,10 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
     listEl.appendChild(a_time);
 
     containerFlight.appendChild(flightContainer);
-    getHotelDetails(location, country);
     };
 
-    
+    getHotelDetails(location, country);
   };
 
   var getHotelDetails = function (location, country) {
@@ -262,25 +226,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 'X-RapidAPI-Host': 'best-booking-com-hotel.p.rapidapi.com'
             }
         })
-        .then(function(response) {
+        let saved_data = {
+            link: "https://www.booking.com/hotel/de/eastseven-berlin-hostel-berlin1.de.html?aid=1938431",
+            name: "EastSeven Berlin",
+            rating: 9.1
+          } 
+        displayHotelDetails(saved_data);
+
+        /*.then(function(response) {
             if (response.ok) {
                 console.log(response);
                 response.json().then(function (data){
                     console.log(data);
-                    displayHotelDetails(data);
+                    let saved_data = {
+                        link: "https://www.booking.com/hotel/de/eastseven-berlin-hostel-berlin1.de.html?aid=1938431",
+                        name: "EastSeven Berlin",
+                        rating: 9.1
+                      } 
+                    displayHotelDetails(saved_data);
+                    //displayHotelDetails(data);
                 });
             }
-        })
-
+        })*/
 
 
   };
 
   var displayHotelDetails = function(data) {
 
-    var h_name = data[i].name;
-    var h_link = data[i].link;
-    var rating = data[i].rating;
+    var h_name = data.name;
+    var h_link = data.link;
+    var rating = data.rating;
 
     var hotelContainer = document.createElement('div');
     hotelContainer.classList = 'card';
