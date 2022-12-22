@@ -114,7 +114,7 @@ listEl.appendChild(departure_t);
 
 var d_time = document.createElement('li');
 d_time.classList = 'list-group-item';
-d_time.textContent = 'Departs: ' + a_time_local;
+d_time.textContent = 'Departs: ' + s_time_local;
 
 listEl.appendChild(d_time);
 
@@ -144,7 +144,7 @@ listEl.appendChild(arrival_t);
 
 var a_time = document.createElement('li');
 a_time.classList = 'list-group-item';
-a_time.textContent = 'Arrives: ' + s_time_local;
+a_time.textContent = 'Arrives: ' + a_time_local;
 
 listEl.appendChild(a_time);
 
