@@ -1,33 +1,114 @@
-
-  body {
-    font-family: sans-serif;
-    justify-content:space-between;
+/* Irene's Code */ 
+.hide {
+    display: none;
 }
 
+body {
+    height: 800px;
+    width: 100%;
+    background-image: linear-gradient(#25729f4d 10%, rgba(26, 157, 209, 0.6) 90%);
+    font-size: 50 px;
+    text-align: center;
+    font-family: sans-serif;
+    justify-content:space-between;
+  
+}
+
+.title {
+    text-align: center; 
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+
+
+.t-welcome {
+    text-align: center;
+    font-size: larger;
+    color:#fff9f9; 
+  
+}
+
+.click {
+    text-align: center;
+    align-items: center;
+    position: absolute; 
+    left: 1%; 
+
+}
+  
+  
+/*-----My code----*/
 
 .modal{
     background:rgb(204, 239, 251);
 }
 
-.modal-card-body p {
+.modal-card-head p {
     text-align:center;
+    font-size:25px;
+    color:rgb(37, 22, 133);
+    font-weight: bold;
+    text-transform:uppercase;
 }
 
-.input {
+.modal-card-body p {
     text-align:center;
+    font-size:25px;
+    color:rgb(37, 22, 133);
+    font-weight:350;
+}
+
+#airline, #f_number {
+    text-align:center;
+    border-radius:2em;
+    border-color: #92BCEA;
+    width:280px;
+    padding:10px;
+}
+
+.modal-card-foot button {
+    padding: 10px;
+    margin: 15px;
+    flex: 1 0 00px;
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;
     border-radius:2em;
     border-color: #92BCEA;
 }
 
-
-#flight, #hotel{
-    background:#1D263B;
+.button-is-success, .button {
+    background-color:white;
 }
 
+.button-is-success:hover{
+    color:rgb(37, 22, 133);
+    background-color:rgb(177, 191, 220);
+    transition:0.4s;
+    box-shadow:0 0 15px;
+}
+
+.button-is.success:focus {
+    outline: none;
+    border-color:rgba(26, 157, 209, 0.6);
+}
+
+.button:hover {
+    color:rgb(37, 22, 133);
+    background-color:rgb(177, 191, 220);
+    transition:0.4s;
+    box-shadow:0 0 15px;
+}
 
 #another{
     align-items: center;
     margin-top:10px;
     border-radius:1em;
-    font-size: 22px;
+    font-size: 25px;
 }
+
+#another:hover{
+    cursor:pointer;
+    box-shadow:0 0 25px white;
+    
+}
+
