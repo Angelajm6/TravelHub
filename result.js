@@ -4,6 +4,7 @@ var containerHotel = document.getElementById('hotel');
 var welcome = document.getElementById('welcome');
 var another = document.getElementById('another');
 var s_hotel_map = document.getElementById('s_hotel');
+var showing = document.getElementById('showing');
 
 function getParams() {
     // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
@@ -13,12 +14,13 @@ function getParams() {
     var f_number = searchParamsArr[0].split('=').pop();
     var airlineInput = searchParamsArr[1].split('=').pop();
   
-    getFlightDetails(f_number);
+    getFlightDetails(airlineInput,f_number);
   }
         
 
 
-var getFlightDetails = function(f_number) {
+var getFlightDetails = function(airlineInput, f_number) {
+    showing.textContent = ' ' + airlineInput + ' ' + f_number;
 
     var apiUrl = 'https://aerodatabox.p.rapidapi.com/flights/number/' + f_number + '?withAircraftImage=false&withLocation=false&limit=2';
 
@@ -42,10 +44,6 @@ var getFlightDetails = function(f_number) {
 };
 
 var displayFlightDetails = function (data) {
-
-var header = document.createElement('h1');
-header.classList= 'list-group-item';
-header.textContent = 'Showing flights for - ' + flight_number;
 
 
 for (var i=0; i < data.length; i++) {
@@ -329,6 +327,7 @@ document
 // When the user selects a city, get the place details for the city and
 // zoom the map in on the city.
 function onPlaceChanged() {
+document.getElementById('map').style.width="75%";
 const place = autocomplete.getPlace();
 
 if (place.geometry && place.geometry.location) {
@@ -432,6 +431,7 @@ icon.setAttribute("className", "placeIcon");
 
 const name = document.createTextNode(result.name);
 
+
 iconTd.appendChild(icon);
 nameTd.appendChild(name);
 tr.appendChild(iconTd);
@@ -520,4 +520,10 @@ document.getElementById("iw-website-row").style.display = "none";
 }
 getParams();
 
+function goBack() {
+
+    location.assign("./index.html");
+}
+
 window.initMap = initMap;
+another.addEventListener('click', goBack);
