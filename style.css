@@ -6,3 +6,12 @@ body {
     background-image: linear-gradient(#0540634d 10%, rgba(27, 152, 202, 0.6) 90%);
     text-align: center;
 }
+
+.card {
+width: 100%;
+background-image: linear-gradient(#0540634d 10%, rgba(27, 152, 202, 0.6) 90%);
+border-radius: 5px;
+padding: 10px;
+box-shadow: 0 0 10px 2px;
+margin-top: 200px;
+}

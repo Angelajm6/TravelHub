@@ -13,16 +13,17 @@ function getParams() {
     // Get the query and format values
     var f_number = searchParamsArr[0].split('=').pop();
     var airlineInput = searchParamsArr[1].split('=').pop();
+    var date = searchParamsArr[2].split('=').pop();
   
-    getFlightDetails(airlineInput,f_number);
+    getFlightDetails(airlineInput,f_number,date);
   }
         
 
 
-var getFlightDetails = function(airlineInput, f_number) {
+var getFlightDetails = function(airlineInput, f_number,date) {
     showing.textContent = ' ' + airlineInput + ' ' + f_number;
 
-    var apiUrl = 'https://aerodatabox.p.rapidapi.com/flights/number/' + f_number + '?withAircraftImage=false&withLocation=false&limit=2';
+    var apiUrl = 'https://aerodatabox.p.rapidapi.com/flights/number/' + f_number + '/' + date + '?withAircraftImage=false&withLocation=false';
 
     fetch(apiUrl, {
         method: 'GET',
