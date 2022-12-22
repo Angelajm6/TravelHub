@@ -1,4 +1,3 @@
-
 .hide {
     display: none;
 }
@@ -46,7 +45,7 @@ body {
   }
   
   #map {
-    margin-top: 100px;
+    margin-top: 40px;
     width: 500px;
   }
   
