@@ -4,6 +4,7 @@ var containerHotel = document.getElementById('hotel');
 var welcome = document.getElementById('welcome');
 var another = document.getElementById('another');
 var s_hotel_map = document.getElementById('s_hotel');
+var showing = document.getElementById('showing');
 
 function getParams() {
     // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
@@ -12,20 +13,22 @@ function getParams() {
     // Get the query and format values
     var f_number = searchParamsArr[0].split('=').pop();
     var airlineInput = searchParamsArr[1].split('=').pop();
+    var date = searchParamsArr[2].split('=').pop();
   
-    getFlightDetails(f_number);
+    getFlightDetails(airlineInput,f_number,date);
   }
         
 
 
-var getFlightDetails = function(f_number) {
+var getFlightDetails = function(airlineInput, f_number,date) {
+    showing.textContent = ' ' + airlineInput + ' ' + f_number;
 
-    var apiUrl = 'https://aerodatabox.p.rapidapi.com/flights/number/' + f_number + '?withAircraftImage=false&withLocation=false&limit=2';
+    var apiUrl = 'https://aerodatabox.p.rapidapi.com/flights/number/' + f_number + '/' + date + '?withAircraftImage=false&withLocation=false';
 
     fetch(apiUrl, {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '5075fa32f5msh2d37ef7bc1f9242p1fc222jsn8d4befb79511',
+            'X-RapidAPI-Key': 'f007c39639msh778b9a53e17ab98p1fc060jsndcac41fec6cc',
             'X-RapidAPI-Host': 'aerodatabox.p.rapidapi.com'
         }
     })
@@ -33,7 +36,7 @@ var getFlightDetails = function(f_number) {
     .then(function(response) {
         if (response.ok) {
             console.log(response);
-            response.json().then(function(data){
+            response.json().then(function (data){
                 console.log(data);
                 displayFlightDetails(data);
             });
@@ -43,22 +46,18 @@ var getFlightDetails = function(f_number) {
 
 var displayFlightDetails = function (data) {
 
-var header = document.createElement('h1');
-header.classList= 'list-group-item';
-header.textContent = 'Showing flights for - ' + flight_number;
-
 
 for (var i=0; i < data.length; i++) {
 var aircraft = data[i].aircraft.model;
 var airline = data[i].airline.name;
 var a_arrival_code = data[i].arrival.airport.iata;
 var a_arrival_name = data[i].arrival.airport.name;
-var s_time_local = dayjs(data[i].arrival.quality.scheduledTimeLocal).format('MMM DD, YYYY [at] hh:mm a');
-var a_terminal = data[i].arrival.quality.terminal;
+var s_time_local = dayjs(data[i].arrival.scheduledTimeLocal).format('MMM DD, YYYY [at] hh:mm a');
+var a_terminal = data[i].arrival.terminal;
 var a_departure_code = data[i].departure.airport.iata;
 var a_departure_name = data[i].departure.airport.name;
 var a_time_local = dayjs(data[i].departure.scheduledTimeLocal).format('MMM DD, YYYY [at] hh:mm a');
-var d_terminal = data[i].departure.quality.terminal;
+var d_terminal = data[i].departure.terminal;
 var status = data[i].status;
 var flight_number = data[i].number;
 var location = data[i].arrival.airport.municipalityName;
@@ -75,7 +74,7 @@ flightContainer.appendChild(listEl);
 
 var flight_numberEl = document.createElement('li');
 flight_numberEl.classList = 'list-group-item';
-flight_numberEl.textContent = flight_number;
+flight_numberEl.textContent = 'Flight Number - ' + flight_number;
 
 listEl.appendChild(flight_numberEl);
 
@@ -97,15 +96,9 @@ listEl.appendChild(departure);
 
 var d_name = document.createElement('li');
 d_name.classList = 'list-group-item';
-d_name.textContent = a_departure_name;
+d_name.textContent = a_departure_name + ' '+ '(' + a_departure_code + ')';
 
 listEl.appendChild(d_name);
-
-var d_code = document.createElement('li');
-d_code.classList = 'list-group-item';
-d_code.textContent = a_departure_code;
-
-listEl.appendChild(d_code);
 
 var departure_t = document.createElement('li');
 departure_t.classList = 'list-group-item';
@@ -127,15 +120,9 @@ listEl.appendChild(arrival);
 
 var a_name = document.createElement('li');
 a_name.classList = 'list-group-item';
-a_name.textContent = a_arrival_name;
+a_name.textContent = a_arrival_name + ' ' + '(' + a_arrival_code + ')';
 
 listEl.appendChild(a_name);
-
-var a_code = document.createElement('li');
-a_code.classList = 'list-group-item';
-a_code.textContent = a_arrival_code;
-
-listEl.appendChild(a_code);
 
 var arrival_t = document.createElement('li');
 arrival_t.classList = 'list-group-item';
@@ -329,6 +316,7 @@ document
 // When the user selects a city, get the place details for the city and
 // zoom the map in on the city.
 function onPlaceChanged() {
+document.getElementById('map').style.width="75%";
 const place = autocomplete.getPlace();
 
 if (place.geometry && place.geometry.location) {
@@ -432,6 +420,7 @@ icon.setAttribute("className", "placeIcon");
 
 const name = document.createTextNode(result.name);
 
+
 iconTd.appendChild(icon);
 nameTd.appendChild(name);
 tr.appendChild(iconTd);
@@ -520,4 +509,10 @@ document.getElementById("iw-website-row").style.display = "none";
 }
 getParams();
 
+function goBack() {
+
+    location.assign("./index.html");
+}
+
 window.initMap = initMap;
+another.addEventListener('click', goBack);

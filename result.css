@@ -3,12 +3,14 @@
 }
 
 body {
-    background-image: linear-gradient(#0540634d 10%, rgba(27, 152, 202, 0.6) 90%);
+
     text-align: center;
 }
 
 #map {
     height: 100%;
+    width: 50%;
+    float: right;
   }
   
   /* 
@@ -22,7 +24,7 @@ body {
   }
   
   body {
-    padding: 0 !important;
+    padding: 0 ;
   }
   
   table {
@@ -33,35 +35,36 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background: #fff;
+    background-image: linear-gradient(#00629a4d 10%, rgba(27, 152, 202, 0.6) 90%);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    left: 0;
-    position: absolute;
-    top: 10;
-    width: 500px;
+    top: 100;
+    width: 100%;
     z-index: 1;
+    height: 100px;
+
   }
   
   #map {
-    margin-top: 40px;
-    width: 500px;
+    margin-top: 5px;
+    width: 100%;
+    height: 600px;
+    float: left;
   }
   
   #listing {
-    position: absolute;
-    width: 200px;
-    height: 470px;
-    overflow: auto;
-    left: 442px;
-    top: 0px;
+    width: 250px;
+    height: 600px;
     cursor: pointer;
     overflow-x: hidden;
+    float: right;
+
   }
   
   #findhotels {
-    font-size: 14px;
+    font-size: 20px;
+    text-align: center;
   }
   
   #locationField {
@@ -75,10 +78,12 @@ body {
     -webkit-box-flex: 1 1 140px;
     -ms-flex: 1 1 140px;
     flex: 1 1 140px;
+    height: 30px;
   }
   
   #autocomplete {
     width: 100%;
+    height: 30px;
   }
   
   #country {
@@ -118,3 +123,40 @@ body {
   .iw_table_icon {
     text-align: right;
   }
+  
+  .list-group {
+    z-index: 1;
+    background-image: linear-gradient(#0540634d 10%, rgba(27, 152, 202, 0.6) 90%);
+    padding: 10px;
+    font-size: 20px;
+  }
+
+  header{
+    font-size: 30px;
+    background-image: linear-gradient(#0540634d 10%, rgba(27, 152, 202, 0.6) 90%);
+    padding: 20px;
+    text-align: left;
+  }
+
+.card {
+    margin: 20px;
+    width: 100%;
+}
+
+#another {
+    width: 200px;
+    height: 50px;
+    float: right;
+    background-image: linear-gradient(#0aa2fa4d 10%, rgba(136, 221, 255, 0.6) 90%);
+    font-size: 15px;
+    border: blanchedalmond;
+}
+
+#another:hover {
+    cursor: pointer;
+    background-color: rgb(34, 174, 255);
+}
+
+.list-group-item{
+margin: 10px;
+}
