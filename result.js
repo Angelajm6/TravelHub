@@ -28,7 +28,7 @@ var getFlightDetails = function(airlineInput, f_number,date) {
     fetch(apiUrl, {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '5075fa32f5msh2d37ef7bc1f9242p1fc222jsn8d4befb79511',
+            'X-RapidAPI-Key': 'f007c39639msh778b9a53e17ab98p1fc060jsndcac41fec6cc',
             'X-RapidAPI-Host': 'aerodatabox.p.rapidapi.com'
         }
     })
@@ -36,7 +36,7 @@ var getFlightDetails = function(airlineInput, f_number,date) {
     .then(function(response) {
         if (response.ok) {
             console.log(response);
-            response.json().then(function(data){
+            response.json().then(function (data){
                 console.log(data);
                 displayFlightDetails(data);
             });
@@ -52,12 +52,12 @@ var aircraft = data[i].aircraft.model;
 var airline = data[i].airline.name;
 var a_arrival_code = data[i].arrival.airport.iata;
 var a_arrival_name = data[i].arrival.airport.name;
-var s_time_local = dayjs(data[i].arrival.quality.scheduledTimeLocal).format('MMM DD, YYYY [at] hh:mm a');
-var a_terminal = data[i].arrival.quality.terminal;
+var s_time_local = dayjs(data[i].arrival.scheduledTimeLocal).format('MMM DD, YYYY [at] hh:mm a');
+var a_terminal = data[i].arrival.terminal;
 var a_departure_code = data[i].departure.airport.iata;
 var a_departure_name = data[i].departure.airport.name;
 var a_time_local = dayjs(data[i].departure.scheduledTimeLocal).format('MMM DD, YYYY [at] hh:mm a');
-var d_terminal = data[i].departure.quality.terminal;
+var d_terminal = data[i].departure.terminal;
 var status = data[i].status;
 var flight_number = data[i].number;
 var location = data[i].arrival.airport.municipalityName;
@@ -74,7 +74,7 @@ flightContainer.appendChild(listEl);
 
 var flight_numberEl = document.createElement('li');
 flight_numberEl.classList = 'list-group-item';
-flight_numberEl.textContent = flight_number;
+flight_numberEl.textContent = 'Flight Number - ' + flight_number;
 
 listEl.appendChild(flight_numberEl);
 
@@ -96,15 +96,9 @@ listEl.appendChild(departure);
 
 var d_name = document.createElement('li');
 d_name.classList = 'list-group-item';
-d_name.textContent = a_departure_name;
+d_name.textContent = a_departure_name + ' '+ '(' + a_departure_code + ')';
 
 listEl.appendChild(d_name);
-
-var d_code = document.createElement('li');
-d_code.classList = 'list-group-item';
-d_code.textContent = a_departure_code;
-
-listEl.appendChild(d_code);
 
 var departure_t = document.createElement('li');
 departure_t.classList = 'list-group-item';
@@ -114,7 +108,7 @@ listEl.appendChild(departure_t);
 
 var d_time = document.createElement('li');
 d_time.classList = 'list-group-item';
-d_time.textContent = 'Departs: ' + s_time_local;
+d_time.textContent = 'Departs: ' + a_time_local;
 
 listEl.appendChild(d_time);
 
@@ -126,15 +120,9 @@ listEl.appendChild(arrival);
 
 var a_name = document.createElement('li');
 a_name.classList = 'list-group-item';
-a_name.textContent = a_arrival_name;
+a_name.textContent = a_arrival_name + ' ' + '(' + a_arrival_code + ')';
 
 listEl.appendChild(a_name);
-
-var a_code = document.createElement('li');
-a_code.classList = 'list-group-item';
-a_code.textContent = a_arrival_code;
-
-listEl.appendChild(a_code);
 
 var arrival_t = document.createElement('li');
 arrival_t.classList = 'list-group-item';
@@ -144,7 +132,7 @@ listEl.appendChild(arrival_t);
 
 var a_time = document.createElement('li');
 a_time.classList = 'list-group-item';
-a_time.textContent = 'Arrives: ' + a_time_local;
+a_time.textContent = 'Arrives: ' + s_time_local;
 
 listEl.appendChild(a_time);
 
