@@ -1,3 +1,9 @@
+:root {
+  --background: linear-gradient(#60A0DB 10%, rgb(204, 225, 255) 90%);
+  --button: #AAB3C5;
+  --font:'Lora', serif;
+}
+
 .hide {
     display: none;
 }
@@ -12,20 +18,14 @@ body {
     width: 50%;
     float: right;
   }
-  
-  /* 
-   * Optional: Makes the sample page fill the window. 
-   */
+
   html,
   body {
     height: 100%;
     margin: 0;
     padding: 0;
   }
-  
-  body {
-    padding: 0 ;
-  }
+
   
   table {
     font-size: 12px;
@@ -35,7 +35,7 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background-image: linear-gradient(#00629a4d 10%, rgba(27, 152, 202, 0.6) 90%);
+    background-image: var(--background);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -43,28 +43,32 @@ body {
     width: 100%;
     z-index: 1;
     height: 100px;
+    margin: 20px;
 
   }
   
   #map {
     margin-top: 5px;
     width: 100%;
-    height: 600px;
+    height: 800px;
     float: left;
+    margin: 20px;
   }
   
   #listing {
     width: 250px;
-    height: 600px;
+    height: 800px;
     cursor: pointer;
     overflow-x: hidden;
     float: right;
+    margin-right: 20px;
 
   }
   
   #findhotels {
     font-size: 20px;
     text-align: center;
+    font-weight: bold;
   }
   
   #locationField {
@@ -108,7 +112,7 @@ body {
   
   #rating {
     font-size: 13px;
-    font-family: Arial Unicode MS;
+    font-family: 'Lora', serif;
   }
   
   .iw_table_row {
@@ -126,14 +130,14 @@ body {
   
   .list-group {
     z-index: 1;
-    background-image: linear-gradient(#0540634d 10%, rgba(27, 152, 202, 0.6) 90%);
+    background-image: var(--background);
     padding: 10px;
     font-size: 20px;
   }
 
   header{
     font-size: 30px;
-    background-image: linear-gradient(#0540634d 10%, rgba(27, 152, 202, 0.6) 90%);
+    background-image: var(--background);
     padding: 20px;
     text-align: left;
   }
@@ -143,20 +147,43 @@ body {
     width: 100%;
 }
 
-#another {
-    width: 200px;
-    height: 50px;
-    float: right;
-    background-image: linear-gradient(#0aa2fa4d 10%, rgba(136, 221, 255, 0.6) 90%);
-    font-size: 15px;
-    border: blanchedalmond;
+button {
+  background-color: var(--button);
+  color:white;
+  width:300px;
+  height:46px;
+  font-size:20px;
+  border:20px;
+  float: right;
 }
 
-#another:hover {
-    cursor: pointer;
-    background-color: rgb(34, 174, 255);
+button:hover {
+  background-color:rgb(177, 191, 220);
+  transition:0.4s;
+  box-shadow:0 0 15px;
+  cursor:pointer;
+}
+
+img {
+width:40%;
+height: 200px;
+display: block;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 20px;
+}
+
+h1 {
+  border: 3px solid var(--button);
+  margin: 20px;
+  font-weight: bold;
 }
 
 .list-group-item{
 margin: 10px;
+}
+
+#logo {
+  width: 10px;
+  height: 10px;
 }

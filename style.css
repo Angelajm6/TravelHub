@@ -1,9 +1,14 @@
+:root {
+    --background: linear-gradient(#60A0DB 10%, rgb(204, 225, 255) 90%);
+    --light: white;
+  }
+
 .hide {
     display: none;
 }
 
 body {
-    font-family: Lora, serif;
+    font-family: 'Lora', serif;
     text-align: center;
     background:url('./images/plane.jpeg') no-repeat center center/cover;
     width:100%;
@@ -12,17 +17,17 @@ body {
 
 .card {
     width: 100%;
-    background-image: linear-gradient(#0540634d 10%, rgba(27, 152, 202, 0.6) 90%);
+    background-image: var(--background);
     opacity:.7;
     border-radius: 5px;
     padding: 10px;
     box-shadow: 0 0 10px 2px;
-    margin-top: 200px !important;
+    margin-top: 130px;
 }
 
 .card-content p {
     font-size:25px;
-    font-family: Ubuntu, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .card-content input {
@@ -32,7 +37,7 @@ body {
 
 .card-content input:hover {
     cursor:pointer;
-    box-shadow:0 0 25px white;
+    box-shadow:0 0 25px var(--light);
     transition:0.4s;
 }
 
@@ -46,7 +51,7 @@ body {
 
 button {
     background-color:rgb(36, 60, 85);
-    color:white;
+    color: var(--light);
     width:300px;
     height:40px;
     font-size:20px;
