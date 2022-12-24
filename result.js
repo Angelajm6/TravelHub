@@ -21,7 +21,6 @@ function getParams() {
 
 
 var getFlightDetails = function(airlineInput, f_number,date) {
-    showing.textContent = ' ' + airlineInput + ' ' + f_number;
 
     var apiUrl = 'https://aerodatabox.p.rapidapi.com/flights/number/' + f_number + '/' + date + '?withAircraftImage=false&withLocation=false';
 
@@ -64,6 +63,8 @@ var location = data[i].arrival.airport.municipalityName;
 var regionName = new Intl.DisplayNames(['en'], {type: 'region'});
 var country = regionName.of(data[i].arrival.airport.countryCode);
 
+showing.textContent = ' ' + airline + ' ' + flight_number;
+
 var flightContainer = document.createElement('div');
 flightContainer.classList = 'card';
 
@@ -81,12 +82,9 @@ listEl.appendChild(flight_numberEl);
 var airlineEl = document.createElement('li');
 airlineEl.classList = 'list-group-item';
 airlineEl.textContent = airline;
+airlineEl.style.fontWeight = 'bold';
 
 listEl.appendChild(airlineEl);
-
-var statusEL = document.createElement('li');
-statusEL.classList = 'list-group-item';
-statusEL.textContent = status;
 
 var departure = document.createElement('li');
 departure.classList = 'list-group-item';
@@ -97,6 +95,7 @@ listEl.appendChild(departure);
 var d_name = document.createElement('li');
 d_name.classList = 'list-group-item';
 d_name.textContent = a_departure_name + ' '+ '(' + a_departure_code + ')';
+d_name.style.fontWeight = 'bold';
 
 listEl.appendChild(d_name);
 
@@ -106,7 +105,7 @@ departure_t.textContent = 'Terminal: ' + d_terminal;
 
 listEl.appendChild(departure_t);
 
-var d_time = document.createElement('li');
+var d_time = document.createElement('b');
 d_time.classList = 'list-group-item';
 d_time.textContent = 'Departs: ' + a_time_local;
 
@@ -118,7 +117,7 @@ arrival.textContent = 'Arrival Details';
 
 listEl.appendChild(arrival);
 
-var a_name = document.createElement('li');
+var a_name = document.createElement('b');
 a_name.classList = 'list-group-item';
 a_name.textContent = a_arrival_name + ' ' + '(' + a_arrival_code + ')';
 
@@ -130,7 +129,7 @@ arrival_t.textContent = 'Terminal: ' + a_terminal;
 
 listEl.appendChild(arrival_t);
 
-var a_time = document.createElement('li');
+var a_time = document.createElement('b');
 a_time.classList = 'list-group-item';
 a_time.textContent = 'Arrives: ' + s_time_local;
 
@@ -149,20 +148,20 @@ var getHotelDetails = function (location, country) {
     fetch(apiUrl, {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '5075fa32f5msh2d37ef7bc1f9242p1fc222jsn8d4befb79511',
+            'X-RapidAPI-Key': 'f007c39639msh778b9a53e17ab98p1fc060jsndcac41fec6cc',
             'X-RapidAPI-Host': 'best-booking-com-hotel.p.rapidapi.com'
         }
     })
-    let saved_data = {
+    /*let saved_data = {
         link: "https://www.booking.com/hotel/de/eastseven-berlin-hostel-berlin1.de.html?aid=1938431",
         name: "EastSeven Berlin",
         rating: 9.1
       } 
-    displayHotelDetails(saved_data);
+    displayHotelDetails(saved_data);*/
     
 
 
-    /*.then(function(response) {
+    .then(function(response) {
         if (response.ok) {
             console.log(response);
             response.json().then(function (data){
@@ -170,7 +169,7 @@ var getHotelDetails = function (location, country) {
                 displayHotelDetails(data);
             });
         }
-    })*/
+    })
 
 
 };
@@ -192,6 +191,7 @@ hotelContainer.appendChild(list_h_El);
 var hotel_d = document.createElement('li');
 hotel_d.classList = 'list-group-item';
 hotel_d.textContent = 'Checkout the best rated nearby hotel!';
+hotel_d.style.fontWeight = 'bold';
 
 list_h_El.appendChild(hotel_d);
 
@@ -199,12 +199,14 @@ var hotel_nEl = document.createElement('a');
 hotel_nEl.classList = 'list-group-item';
 hotel_nEl.textContent = h_name;
 hotel_nEl.href = h_link;
+hotel_nEl.style.fontWeight = 'bold';
 
 list_h_El.appendChild(hotel_nEl);
 
 var hotel_r = document.createElement('li');
 hotel_r.classList = 'list-group-item';
-hotel_r.textContent = 'Ratings: ' + rating;
+hotel_r.textContent = 'Rating: ' + rating;
+hotel_r.style.fontWeight = 'bold';
 
 list_h_El.appendChild(hotel_r);
 
@@ -212,13 +214,6 @@ containerHotel.appendChild(hotelContainer);
 
 };
 
-// This example uses the autocomplete feature of the Google Places API.
-// It allows the user to find all hotels in a given place, within a given
-// country. It then displays markers for all the hotels returned,
-// with on-click details for each hotel.
-// This example requires the Places library. Include the libraries=places
-// parameter when you first load the API. For example:
-// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 let map;
 let places;
 let infoWindow;
