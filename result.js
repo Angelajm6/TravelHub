@@ -6,6 +6,7 @@ var another = document.getElementById('another');
 var s_hotel_map = document.getElementById('s_hotel');
 var showing = document.getElementById('showing');
 
+
 function getParams() {
     // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
     var searchParamsArr = document.location.search.split('&');
@@ -14,7 +15,8 @@ function getParams() {
     var f_number = searchParamsArr[0].split('=').pop();
     var airlineInput = searchParamsArr[1].split('=').pop();
     var date = searchParamsArr[2].split('=').pop();
-  
+
+
     getFlightDetails(airlineInput,f_number,date);
   }
         
