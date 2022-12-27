@@ -1,22 +1,23 @@
 # Travel-Hub
-An accessible and convenient site that helps user track their flight information and search the top-rated hotels according to their destination and search for more hotels using google maps API. 
+
+An accessible and convenient site that helps users track their flight information and search for the top-rated hotels according to their destination and search for more hotels using google maps API. 
 
 ## Description
 
-We build this app to offer the user access to essential flight information whilst travelling and book for hotels if needed. 
+We built this app to offer the user access to essential flight information whilst travelling and book hotels if needed. 
 
 ## Installation 
 N/A
 
 ## Usage
 
-To use this, the user can start by entering their flight details and it will redirect them to the results page where they can then view all the flight details in one place and it will also display the best rated hotel according to their destination location and the user will then be able to search for more hotels in any citi in the world. 
+The user can start by entering their flight details (Airline, Flight number and Departure date) and it will redirect them to the results page where they can then view all the flight details in one place. It will also display the best rated hotels according to the location of their destination so that the user will be able to search for more hotels in any city in the world. 
 
 ## User Story: 
 
 As a traveller,
-I want to track all my flight information and nearby hotels
-So that I can view it in one place. 
+I want to track all my flight information and nearby best rated hotels
+So that I can view it in one webpage. 
 
 ## Acceptance Criteria:
 
