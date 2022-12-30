@@ -64,3 +64,9 @@ button:hover {
     box-shadow:0 0 15px;
     cursor:pointer;
 }
+
+
+#error {
+    font-size: 30px;
+    color: rgb(0, 14, 74);
+}

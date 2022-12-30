@@ -11,6 +11,8 @@
         var airlineInput = document.getElementById('airline');
         var f_numberInput = document.getElementById('f_number');
         var dateInput = $('#datepicker');
+        var error = document.getElementById('error');
+
       
 
   var searchHandler = function(event) {
@@ -26,7 +28,7 @@
     date = date.join("-");
 
     if(f_number) {
-
+  
         f_numberInput.value = '';
         airlineInput.value = '';
         dateInput.value = '';
@@ -35,7 +37,7 @@
 
   location.assign(queryString);
 } else {
-        alert('Please enter a valid Airline and Flight Number');
+      error.classList.remove('hide');
     }
 
   };
