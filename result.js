@@ -29,7 +29,7 @@ var getFlightDetails = function(airlineInput, f_number,date) {
     fetch(apiUrl, {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'f007c39639msh778b9a53e17ab98p1fc060jsndcac41fec6cc',
+            'X-RapidAPI-Key': 'f467ba6450mshd78e40e7ab7b505p1c95f1jsn31448e9f7842',
             'X-RapidAPI-Host': 'aerodatabox.p.rapidapi.com'
         }
     })
@@ -150,7 +150,7 @@ var getHotelDetails = function (location, country) {
     fetch(apiUrl, {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'f007c39639msh778b9a53e17ab98p1fc060jsndcac41fec6cc',
+            'X-RapidAPI-Key': 'f467ba6450mshd78e40e7ab7b505p1c95f1jsn31448e9f7842',
             'X-RapidAPI-Host': 'best-booking-com-hotel.p.rapidapi.com'
         }
     })
