@@ -48,7 +48,7 @@ var getFlightDetails = function(airlineInput, f_number,date) {
 var displayFlightDetails = function (data) {
 
 
-for (var i=1; i < data.length; i++) {
+for (var i=0; i < data.length; i++) {
 var aircraft = data[i].aircraft.model;
 var airline = data[i].airline.name;
 var a_arrival_code = data[i].arrival.airport.iata;
