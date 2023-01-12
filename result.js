@@ -48,7 +48,7 @@ var getFlightDetails = function(airlineInput, f_number,date) {
 var displayFlightDetails = function (data) {
 
 
-for (var i=1; i < data.length; i++) {
+for (var i=0; i < data.length; i++) {
 var aircraft = data[i].aircraft.model;
 var airline = data[i].airline.name;
 var a_arrival_code = data[i].arrival.airport.iata;
@@ -150,7 +150,7 @@ var getHotelDetails = function (location, country) {
     fetch(apiUrl, {
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'f467ba6450mshd78e40e7ab7b505p1c95f1jsn31448e9f7842',
+            'X-RapidAPI-Key': '5075fa32f5msh2d37ef7bc1f9242p1fc222jsn8d4befb79511',
             'X-RapidAPI-Host': 'best-booking-com-hotel.p.rapidapi.com'
         }
     })
